@@ -8,7 +8,7 @@ export const LatestUpdates = () => {
 
   return (
     <>
-      <div className={classes.background}>
+      <div className={classes.content}>
         <section className={classes.inicio}>
           <div>
             <div className={classes.inicio__content}>

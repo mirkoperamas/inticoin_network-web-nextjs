@@ -124,6 +124,9 @@
         height: auto;
         margin: 0;
       }
+      @include breakpoints.min-xxl-large {
+        min-width: 35rem;
+      }
     }
     @include breakpoints.min-large {
       width: 100%;

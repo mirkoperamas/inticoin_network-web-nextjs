@@ -8,77 +8,78 @@
 
 .background {
   position: relative;
-  // @include utilities.background-image-params(
-  //   "/img/home/background.png",
-  //   center,
-  //   no-repeat,
-  //   cover
-  // );
   width: 100%;
   height: hvalues.$footer-mobile-h;
   background-image: linear-gradient(to right, colors.$primary, colors.$brown);
   overflow: hidden;
-  // filter: brightness(0.4);
 
   @include breakpoints.min-large {
     background-size: 100% 100%;
+    height: hvalues.$footer-h;
   }
 }
 
 .inicio {
-  position: absolute;
   width: 100%;
-  top: 0;
-  z-index: 100;
-  margin-top: hvalues.$header-mobile-h;
+  height: 100%;
   background-image: linear-gradient(to right, colors.$primary, colors.$brown);
+  @include utilities.flexbox-params(flex, center, center);
+  flex-direction: column;
 
   & > div {
-    // height: calc(100vh - (hvalues.$header-mobile-h));
     width: wvalues.$width-mobile-w;
     margin: 0 auto;
-    @include breakpoints.min-large {
-      width: wvalues.$width-w;
-      height: calc(100vh - (hvalues.$header-h));
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-    }
+    // @include breakpoints.min-large {
+    //   width: wvalues.$width-w;
+    //   height: calc(100vh - (hvalues.$header-h));
+    //   display: grid;
+    //   grid-template-columns: 1.3fr 0.7fr;
+    // }
   }
 
   &__content {
     margin: 0 auto;
     @include utilities.flexbox-params(flex, auto, center);
     flex-direction: column;
-    // border: 1px solid red;
 
-    @include breakpoints.min-large {
-      height: auto;
-    }
+    // @include breakpoints.min-large {
+    //   height: auto;
+    // }
 
     &__text {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0.5rem;
-      // border: 1px solid blue;
+      @include breakpoints.min-large {
+        width: 70%;
+        margin: 0 auto;
+      }
 
       & > div {
         width: 100%;
         margin: 0 auto;
-        // border: 1px solid red;
 
         & strong {
-          font-size: 11px;
+          font-size: 14px;
           text-transform: uppercase;
           text-shadow: 1px 1px 1px colors.$dark;
+          @include breakpoints.min-large {
+            font-size: 20px;
+          }
         }
 
         & p {
-          font-size: 8px;
+          font-size: 12px;
           margin: 0;
           margin-bottom: 0.4rem;
-          line-height: 9px;
+          line-height: 12px;
           text-align: start;
           font-weight: bold;
+          @include breakpoints.min-large {
+            font-size: 16px;
+            line-height: 16px;
+            margin-top: 0.6rem;
+          }
         }
       }
       &Diferent {
@@ -89,27 +90,34 @@
       }
     }
 
+    &Column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+    }
+
     & > span {
       width: 100%;
       height: 0.2rem;
       background: colors.$brown;
-      margin: 1rem 0;
+      margin: 1.8rem 0;
     }
 
     &__logo {
       div {
-        width: 10rem;
+        width: 14rem;
       }
     }
 
     &__subscribe {
       margin-top: 1rem;
       & strong {
-        font-size: 12px;
+        font-size: 14px;
         text-shadow: 1px 1px 1px colors.$dark;
       }
       & div {
-        margin-top: 0.3rem;
+        margin-top: 0.5rem;
         display: flex;
         & input {
           color: black;
@@ -125,15 +133,15 @@
     }
 
     &__follow {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       & strong {
-        font-size: 12px;
+        font-size: 14px;
         text-shadow: 1px 1px 1px colors.$dark;
       }
       & > div {
         @include utilities.flexbox-params(flex, center, auto);
         & div {
-          margin-top: 0.2rem;
+          margin-top: 0.5rem;
           width: 1.5rem;
           margin-right: 1rem;
         }
@@ -141,8 +149,8 @@
     }
   }
 
-  @include breakpoints.min-large {
-    height: calc(100vh - (hvalues.$header-h));
-    margin-top: hvalues.$header-h;
-  }
+  // @include breakpoints.min-large {
+  //   height: calc(100vh - (hvalues.$header-h));
+  //   margin-top: hvalues.$header-h;
+  // }
 }

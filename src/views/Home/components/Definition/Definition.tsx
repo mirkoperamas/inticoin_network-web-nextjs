@@ -8,6 +8,7 @@ export const Definition = () => {
   return (
     <>
       <div className={classes.background}>
+        <div className={classes.opacy}></div>
         <section className={classes.definition}>
           <div>
             <div className={classes.definition__content}>

@@ -97,12 +97,19 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
       }
+      @include breakpoints.min-xxl-large {
+        gap: 4rem;
+        margin-top: 8rem;
+      }
 
       &__card {
         margin-bottom: 2rem;
         @include breakpoints.min-large {
           width: 80%;
           margin: 0 auto;
+        }
+        @include breakpoints.min-xxl-large {
+          width: 100%;
         }
 
         &Text {

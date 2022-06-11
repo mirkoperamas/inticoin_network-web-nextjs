@@ -8,6 +8,7 @@ export const Inicio = () => {
   return (
     <>
       <div className={classes.background}>
+        <div className={classes.opacy}></div>
         <section className={classes.inicio}>
           <div>
             <div className={classes.inicio__content}>
