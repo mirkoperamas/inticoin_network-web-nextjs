@@ -1,0 +1,44 @@
+@use "/src/styles/base/images";
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/zIndex" as zIndex;
+@use "/src/styles/base/heightValues" as hvalues;
+
+.header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  height: hvalues.$header-h;
+  z-index: zIndex.$header;
+  background: colors.$deg-dark;
+  backdrop-filter: blur(0.5rem);
+
+  &__logo {
+    width: 100%;
+    max-width: 14rem;
+    margin: 0 auto;
+    padding-top: 0.5rem;
+
+    @include breakpoints.min-xxl-large {
+      max-width: 25rem;
+    }
+  }
+
+  & > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include breakpoints.large {
+    display: none;
+  }
+
+  @include breakpoints.min-xxl-large {
+    height: hvalues.$header-max-h;
+    background-size: 100% 100%;
+  }
+}
