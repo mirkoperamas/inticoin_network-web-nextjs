@@ -2,13 +2,13 @@ import Image from "next/image";
 import { useTranslate } from "../../../../hooks/useTranslate";
 import classes from "./inicio.module.scss";
 
-export const Inicio = () => {
+export const Inicio = ({ setPaper }: any) => {
   const { t } = useTranslate();
 
   return (
     <>
       <div className={classes.background}>
-        <div className={classes.opacy}></div>
+        <div className={classes.layer}></div>
         <section className={classes.inicio}>
           <div>
             <div className={classes.inicio__content}>
@@ -18,7 +18,7 @@ export const Inicio = () => {
                 <h2>{t.inicio.commingSoon}</h2>
               </div>
               <div className={classes.inicio__content__button}>
-                <button>Video</button>
+                <button onClick={() => setPaper(true)}>Video</button>
               </div>
             </div>
             <div className={classes.inicio__image}>

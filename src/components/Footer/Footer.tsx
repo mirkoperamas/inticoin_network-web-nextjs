@@ -1,17 +1,45 @@
 import Image from "next/image";
+import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 import { useTranslate } from "../../hooks/useTranslate";
 import classes from "./footer.module.scss";
 
 export const Footer = () => {
   const { t } = useTranslate();
 
+  const initialForm = { email: "" };
+  const [sendErrs, setSendErrs] = useState(true);
+  const [msj, setMsj] = useState({ email: "" });
+
+  const validationForm = (form: any) => {
+    const emailRegEx = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+
+    if (!form.email.trim() || !emailRegEx.test(form.email.trim())) {
+      setSendErrs(true);
+      if (!form.email.trim()) {
+        msj.email = "The EMAIL field is required";
+      } else if (!emailRegEx.test(form.email.trim())) {
+        msj.email = "The EMAIL field is incorrect";
+      }
+    } else {
+      setSendErrs(false);
+      setMsj({ email: "" });
+    }
+  };
+
+  const { form, handleBlur, handleChange, handleSubmit } = useForm(
+    initialForm,
+    validationForm,
+    sendErrs
+  );
+
   return (
     <>
       <div className={classes.background}>
-        <section className={classes.inicio}>
+        <section className={classes.footer}>
           <div>
-            <div className={classes.inicio__content}>
-              <div className={classes.inicio__content__text}>
+            <div className={classes.footer__content}>
+              <div className={classes.footer__content__text}>
                 <div>
                   <strong>{t.footer.about.title}</strong>
                   <p>{t.footer.about._01}</p>
@@ -27,38 +55,52 @@ export const Footer = () => {
                   <p>{t.footer.product._02}</p>
                   <p>{t.footer.product._03}</p>
                 </div>
-                <div className={classes.inicio__content__textDiferent}>
+                <div className={classes.footer__content__textDiferent}>
                   <strong>{t.footer.community.title}</strong>
                   <p>{t.footer.community._01}</p>
                   <p>{t.footer.community._02}</p>
                   <p>{t.footer.community._03}</p>
                   <p>{t.footer.community._04}</p>
                 </div>
-                <div className={classes.inicio__content__textDiferent}>
+                <div className={classes.footer__content__textDiferent}>
                   <strong>{t.footer.languages.title}</strong>
                   <p>{t.footer.languages.en}</p>
+                  <p>{t.footer.languages.es}</p>
                 </div>
               </div>
               <span />
-              <div className={classes.inicio__contentColumn}>
-                <div className={classes.inicio__content__logo}>
+              <div className={classes.footer__content__main}>
+                <div className={classes.footer__content__mainLogo}>
                   <div>
                     <Image
                       src="/img/footer/icon.png"
                       layout="responsive"
                       width={200}
                       height={23}
+                      alt="icon"
                     />
                   </div>
                 </div>
-                <div className={classes.inicio__content__subscribe}>
+                <div className={classes.footer__content__mainSubscribe}>
                   <strong>{t.footer.subscribe}</strong>
                   <div>
-                    <input type="text" disabled={true} />
-                    <button>{t.footer.button}</button>
+                    <form onSubmit={handleSubmit}>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="email"
+                        onBlur={handleBlur}
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                      />
+                      <button>{t.footer.button}</button>
+                      <p>{msj.email}</p>
+                    </form>
                   </div>
                 </div>
-                <div className={classes.inicio__content__follow}>
+                <div className={classes.footer__content__mainFollow}>
                   <strong>{t.footer.follow}</strong>
                   <div>
                     <a

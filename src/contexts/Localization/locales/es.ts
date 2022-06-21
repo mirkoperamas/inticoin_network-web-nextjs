@@ -1,8 +1,14 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  inicio: {
-    title: "La primera cryptomoneda del peru",
-    text: "Habilita varias maquinas virtuales, incluida EVM, basada en mineria PoS y cuenta con un Protocolo de gobierno descentralizado (DGP).",
-    commingSoon: "Proximamente ...",
+  header: {
+    inicio: "Inicio",
+    developer: "Desarrollador",
+    product: "Producto",
+    lastnews: "Ultimas noticias",
+    community: "Comunidad",
+    about: "Acerca de",
+    forms: "Formularios",
+    update: "Actualizacion",
   },
   footer: {
     about: {
@@ -30,12 +36,18 @@ export default {
     languages: {
       title: "Idiomas",
       en: "English",
+      es: "Español",
     },
     subscribe: "Subscribete para recibir nuestras actualizaciones",
     button: "Subscribirse",
     follow: "Siganos",
     copyrigth:
       "© Copyright | Fundacion Qolkrex 2021 | Todos los derechos reservados",
+  },
+  inicio: {
+    title: "La primera cryptomoneda del peru",
+    text: "Habilita varias maquinas virtuales, incluida EVM, basada en mineria PoS y cuenta con un Protocolo de gobierno descentralizado (DGP).",
+    commingSoon: "Proximamente ...",
   },
   definition: {
     peru: "Criptomoneda del Perú",

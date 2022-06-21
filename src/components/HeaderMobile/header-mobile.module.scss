@@ -21,6 +21,7 @@
   width: 100%;
   height: hvalues.$header-mobile-h;
   background: colors.$dark;
+  position: relative;
   @include utilities.flexbox-params(flex, center, auto);
 
   & > div {
@@ -43,6 +44,12 @@
   }
   &LogoIcon img {
     min-height: 1.2rem;
+  }
+
+  &LangPosition {
+    position: absolute;
+    top: 30%;
+    left: 85%;
   }
 }
 

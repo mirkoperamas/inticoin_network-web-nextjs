@@ -1,0 +1,50 @@
+@use "/src/styles/base/images";
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/zIndex" as zIndex;
+@use "/src/styles/base/heightValues" as hvalues;
+
+.selectlang {
+  width: 3rem;
+  height: 2rem;
+  cursor: pointer;
+
+  a {
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  &__view {
+    @include utilities.flexbox-params(flex, center, auto);
+    margin-bottom: 0.5rem;
+    position: relative;
+    &Flag {
+      width: 100%;
+      max-width: 1.5rem;
+      margin-right: 3px;
+    }
+    &Arrow {
+      width: 100%;
+      max-width: 0.5rem;
+    }
+
+    &Select {
+      position: absolute;
+      display: none;
+      width: 100%;
+      top: 140%;
+      > div {
+        width: 100%;
+        max-width: 1.5rem;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.selectlang:hover .selectlang__view {
+  &Select {
+    display: block;
+  }
+}

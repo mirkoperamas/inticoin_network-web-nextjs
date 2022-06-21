@@ -9,10 +9,18 @@
   position: fixed;
   right: 0;
   left: 0;
+  transition: top 0.8s;
   height: hvalues.$header-h;
   z-index: zIndex.$header;
   background: colors.$deg-dark;
   backdrop-filter: blur(0.5rem);
+  @include breakpoints.large {
+    display: none;
+  }
+  @include breakpoints.min-xxl-large {
+    height: hvalues.$header-max-h;
+    background-size: 100% 100%;
+  }
 
   &__logo {
     width: 100%;
@@ -25,20 +33,17 @@
     }
   }
 
+  &__langPosition {
+    position: absolute;
+    top: 25%;
+    left: 94%;
+  }
+
   & > div {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  @include breakpoints.large {
-    display: none;
-  }
-
-  @include breakpoints.min-xxl-large {
-    height: hvalues.$header-max-h;
-    background-size: 100% 100%;
   }
 }

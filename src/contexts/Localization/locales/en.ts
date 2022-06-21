@@ -1,8 +1,14 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  inicio: {
-    title: "The first cryptocurrency of Peru",
-    text: "Enables various virtual machines, including EVM, based on PoS mining and has a Decentralized Governance Protocol (DGP).",
-    commingSoon: "Coming soon ...",
+  header: {
+    inicio: "Inicio",
+    developer: "Developer",
+    product: "Product",
+    lastnews: "Last new",
+    community: "Community",
+    about: "About",
+    forms: "Forms",
+    update: "update",
   },
   footer: {
     about: {
@@ -30,11 +36,17 @@ export default {
     languages: {
       title: "Languages",
       en: "English",
+      es: "Español",
     },
     subscribe: "Sign up to receive our updates",
     button: "Subscribe",
     follow: "Follow us",
     copyrigth: "© Copyright | Qolkrex Foundation 2021 | All rights reserved",
+  },
+  inicio: {
+    title: "The first cryptocurrency of Peru",
+    text: "Enables various virtual machines, including EVM, based on PoS mining and has a Decentralized Governance Protocol (DGP).",
+    commingSoon: "Coming soon ...",
   },
   definition: {
     peru: "Peru Cryptocurrency",

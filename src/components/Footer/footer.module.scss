@@ -8,43 +8,46 @@
 
 .background {
   position: relative;
+  overflow: hidden;
   width: 100%;
   height: hvalues.$footer-mobile-h;
   background-image: linear-gradient(to right, colors.$primary, colors.$brown);
-  overflow: hidden;
-
   @include breakpoints.min-large {
     background-size: 100% 100%;
     height: hvalues.$footer-h;
   }
+  @include breakpoints.min-xxl-large {
+    height: hvalues.$footer-max-h;
+  }
 }
 
-.inicio {
+.footer {
+  // border: 1px solid red;
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to right, colors.$primary, colors.$brown);
   @include utilities.flexbox-params(flex, center, center);
   flex-direction: column;
 
-  & > div {
+  > div {
+    // border: 1px solid blue;
     width: wvalues.$width-mobile-w;
     margin: 0 auto;
-    // @include breakpoints.min-large {
-    //   width: wvalues.$width-w;
-    //   height: calc(100vh - (hvalues.$header-h));
-    //   display: grid;
-    //   grid-template-columns: 1.3fr 0.7fr;
-    // }
+    @include breakpoints.min-large {
+      width: wvalues.$width-w;
+    }
+    @include breakpoints.min-xxl-large {
+      max-width: wvalues.$width-max-w;
+    }
   }
 
   &__content {
+    // border: 1px solid green;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     @include utilities.flexbox-params(flex, auto, center);
     flex-direction: column;
-
-    // @include breakpoints.min-large {
-    //   height: auto;
-    // }
 
     &__text {
       display: grid;
@@ -55,102 +58,157 @@
         margin: 0 auto;
       }
 
-      & > div {
+      > div {
         width: 100%;
         margin: 0 auto;
 
-        & strong {
+        strong {
           font-size: 14px;
           text-transform: uppercase;
           text-shadow: 1px 1px 1px colors.$dark;
-          @include breakpoints.min-large {
+          @include breakpoints.min-xxl-large {
             font-size: 20px;
           }
         }
 
-        & p {
+        p {
           font-size: 12px;
           margin: 0;
           margin-bottom: 0.4rem;
           line-height: 12px;
           text-align: start;
           font-weight: bold;
-          @include breakpoints.min-large {
+          @include breakpoints.min-xxl-large {
             font-size: 16px;
             line-height: 16px;
             margin-top: 0.6rem;
           }
         }
       }
+
       &Diferent {
         text-align: end;
-        & p {
+        > p {
           text-align: end !important;
         }
       }
     }
 
-    &Column {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      justify-content: center;
-      align-items: center;
-    }
-
-    & > span {
+    > span {
       width: 100%;
       height: 0.2rem;
       background: colors.$brown;
       margin: 1.8rem 0;
-    }
-
-    &__logo {
-      div {
-        width: 14rem;
+      @include breakpoints.min-large {
+        margin: 1rem 0;
+      }
+      @include breakpoints.min-xxl-large {
+        margin: 2rem 0;
       }
     }
 
-    &__subscribe {
-      margin-top: 1rem;
-      & strong {
-        font-size: 14px;
-        text-shadow: 1px 1px 1px colors.$dark;
-      }
-      & div {
-        margin-top: 0.5rem;
-        display: flex;
-        & input {
-          color: black;
-          outline: none;
-        }
-        & button {
-          background: colors.$dark;
-          outline: none;
-          border: 0;
-          padding: 0 1.2rem;
+    &__main {
+      @include breakpoints.min-large {
+        @include utilities.flexbox-params(grid, center, center);
+        grid-template-columns: 1fr 1fr 1fr;
+        // border: 1px solid yellow;
+        > div {
+          // border: 1px solid orange;
+          @include breakpoints.min-large {
+            @include utilities.flexbox-params(flex, center, center);
+            flex-direction: column;
+          }
         }
       }
-    }
 
-    &__follow {
-      margin-top: 1.5rem;
-      & strong {
-        font-size: 14px;
-        text-shadow: 1px 1px 1px colors.$dark;
+      &Logo {
+        div {
+          width: 14rem;
+          @include breakpoints.min-xxl-large {
+            width: 20rem;
+          }
+        }
       }
-      & > div {
-        @include utilities.flexbox-params(flex, center, auto);
-        & div {
+
+      &Subscribe {
+        margin-top: 1rem;
+
+        strong {
+          font-size: 14px;
+          text-shadow: 1px 1px 1px colors.$dark;
+          @include breakpoints.min-xxl-large {
+            font-size: 18px;
+          }
+        }
+
+        div {
           margin-top: 0.5rem;
-          width: 1.5rem;
-          margin-right: 1rem;
+          display: flex;
+
+          input {
+            color: black;
+            outline: none;
+            width: 12rem;
+            padding: 0 0.5rem;
+            @include breakpoints.min-xxl-large {
+              width: 18rem;
+              padding: 0.5rem 1rem;
+            }
+          }
+
+          button {
+            background: colors.$dark;
+            outline: none;
+            border: 0;
+            padding: 0 1.2rem;
+            cursor: pointer;
+            @include breakpoints.min-xxl-large {
+              padding: 0.5rem 1.2rem;
+            }
+          }
+
+          p {
+            font-size: 12px;
+            color: #ff364a !important;
+          }
+        }
+      }
+
+      &Follow {
+        margin-top: 1.5rem;
+
+        strong {
+          font-size: 14px;
+          text-shadow: 1px 1px 1px colors.$dark;
+          margin-bottom: 0.5rem;
+          @include breakpoints.min-xxl-large {
+            font-size: 18px;
+          }
+        }
+
+        > div {
+          // border: 1px solid red;
+          @include utilities.flexbox-params(flex, center, auto);
+          @include breakpoints.min-large {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1rem;
+          }
+
+          div {
+            // border: 1px solid blue;
+            margin-right: 1rem;
+            margin-top: 0.5rem;
+            width: 1.5rem;
+            @include breakpoints.min-large {
+              margin: 0 auto;
+            }
+            @include breakpoints.min-xxl-large {
+              width: 2rem;
+            }
+          }
         }
       }
     }
   }
-
-  // @include breakpoints.min-large {
-  //   height: calc(100vh - (hvalues.$header-h));
-  //   margin-top: hvalues.$header-h;
-  // }
 }

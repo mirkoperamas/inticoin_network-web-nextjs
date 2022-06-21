@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import classes from "./header-mobile.module.scss";
 import { Informative } from "../modals/Informative/Informative";
+import { SelectLang } from "../SelectLang/SelectLang";
+import { Toolbar } from "./components/Toolbar/Toolbar";
 
 export const HeaderMobile = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -44,37 +46,14 @@ export const HeaderMobile = () => {
               </Link>
             </div>
           </div>
+
+          <div className={classes.header__menuLangPosition}>
+            <SelectLang />
+          </div>
         </div>
 
-        <div ref={ref} className={`${classes.header__links}`}>
-          <ul>
-            <li>
-              <Link href="/">
-                <a>Inicio</a>
-              </Link>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Desarrollador</a>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Producto</a>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Ultimas Noticias</a>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Comunidad</a>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Acerca de</a>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Formularios</a>
-            </li>
-            <li>
-              <a onClick={() => setPaper(true)}>Desarrollo</a>
-            </li>
-          </ul>
+        <div ref={ref} className={classes.header__links}>
+          <Toolbar setPaper={setPaper} />
         </div>
       </header>
       {paper && (

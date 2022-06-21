@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./toolbar.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Informative } from "../../../modals/Informative/Informative";
+import { useTranslate } from "../../../../hooks/useTranslate";
 
 export const Toolbar = () => {
+  const { t } = useTranslate();
   const router = useRouter();
   const [paper, setPaper] = useState(false);
-  const [lang, setLang] = useState("");
-
-  const handleLang = () => {
-    if (router.locale === "en") {
-      setLang("English");
-    } else if (router.locale === "es") {
-      setLang("Español");
-    }
-  };
-
-  useEffect(() => {
-    handleLang();
-  }, [lang, handleLang]);
 
   return (
     <>
@@ -28,74 +17,45 @@ export const Toolbar = () => {
           <Link href="/">
             <a className={router.pathname == "/" ? classes.active : ""}>
               <li>
-                <p>Inicio</p>
+                <p>{t.header.inicio}</p>
               </li>
             </a>
           </Link>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Desarrollador</p>
+              <p>{t.header.developer}</p>
             </li>
           </a>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Producto</p>
+              <p>{t.header.product}</p>
             </li>
           </a>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Ultimas noticias</p>
+              <p>{t.header.lastnews}</p>
             </li>
           </a>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Comunidad</p>
+              <p>{t.header.community}</p>
             </li>
           </a>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Acerca de</p>
+              <p>{t.header.about}</p>
             </li>
           </a>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Formularios</p>
+              <p>{t.header.forms}</p>
             </li>
           </a>
           <a onClick={() => setPaper(true)}>
             <li>
-              <p>Actualizacion</p>
+              <p>{t.header.update}</p>
             </li>
           </a>
-          {/* <a
-            onClick={handleLang}
-            className={`${classes.active} ${classes.langStyle}`}
-          >
-            <li>
-              <p>{lang}</p>
-            </li>
-
-            <div className={classes.translatorBox}>
-              <Link href={router.asPath} locale="es">
-                <div>
-                  <p>Español</p>
-                </div>
-              </Link>
-              <Link href={router.asPath} locale="en">
-                <div>
-                  <p>English</p>
-                </div>
-              </Link>
-            </div>
-          </a> */}
-
-          {/* <div className={classes.langs}>
-            {router?.locales?.map((loc: any) => (
-              <Link href={router.asPath} locale={loc} key={loc}>
-                {loc}
-              </Link>
-            ))}
-          </div> */}
         </ul>
       </div>
 

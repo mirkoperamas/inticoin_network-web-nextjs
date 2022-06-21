@@ -9,7 +9,7 @@
 .background {
   position: relative;
   @include utilities.background-image-params(
-    "/img/home/background.png",
+    "/img/home/ecosystem/background.jpg",
     center,
     no-repeat,
     cover
@@ -22,32 +22,53 @@
   }
 }
 
-.ecosystem {
+.layer {
   position: absolute;
+  z-index: zIndex.$layer;
   width: 100%;
-  top: 0;
-  z-index: 100;
-  margin-top: hvalues.$header-mobile-h;
+  height: 100%;
+  // background: rgba(0, 0, 0, 0.3);
+  background: rgba(33, 20, 0, 0.85);
+}
 
+.ecosystem {
+  // border: 1px solid red;
+  position: absolute;
+  z-index: zIndex.$content;
+  top: 0;
+  width: 100%;
+  height: calc(100vh - (hvalues.$header-mobile-h));
+  margin-top: hvalues.$header-mobile-h;
   @include breakpoints.min-large {
     height: calc(100vh - (hvalues.$header-h));
     margin-top: hvalues.$header-h;
   }
+  @include breakpoints.min-xxl-large {
+    height: calc(100vh - (hvalues.$header-max-h));
+    margin-top: hvalues.$header-max-h;
+  }
 
-  & > div {
-    height: calc(100vh - (hvalues.$header-mobile-h));
+  > div {
+    // border: 1px solid blue;
     width: wvalues.$width-mobile-w;
+    height: 100%;
     margin: 0 auto;
+    @include utilities.flexbox-params(flex, center, center);
+    flex-direction: column;
     @include breakpoints.min-large {
       width: wvalues.$width-w;
-      height: calc(100vh - (hvalues.$header-h));
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
+    }
+    @include breakpoints.min-xxl-large {
+      max-width: wvalues.$width-max-w;
     }
   }
 
   &__content {
-    height: 60%;
+    // border: 1px solid green;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     @include utilities.flexbox-params(flex, auto, center);
     flex-direction: column;
@@ -55,7 +76,7 @@
     &__text {
       text-shadow: 1px 1px 1px colors.$dark;
 
-      & h1 {
+      h1 {
         font-size: 22px;
         text-transform: uppercase;
 
@@ -66,19 +87,20 @@
           font-size: 55px;
         }
       }
-      & h3 {
-        font-size: 16px;
+
+      h3 {
+        font-size: 13px;
         margin: 1rem 0rem 2.5rem;
         @include breakpoints.min-xxl-large {
           margin: 1rem 0rem 4rem;
         }
       }
-      & span {
-        font-size: 12px;
+
+      span {
+        font-size: 15px;
         font-weight: bold;
-        margin-right: 2rem;
         @include breakpoints.min-xxl-large {
-          font-size: 18px;
+          font-size: 22px;
         }
       }
     }
@@ -88,7 +110,8 @@
       @include breakpoints.min-xxl-large {
         margin-top: 2rem;
       }
-      & button {
+
+      button {
         outline: none;
         background: transparent;
         border: 0;
@@ -101,41 +124,29 @@
           colors.$brown
         );
         cursor: pointer;
+        @include breakpoints.min-large {
+          padding: 0.5rem 1.5rem;
+        }
         @include breakpoints.min-xxl-large {
           font-size: 24px;
           padding: 0 1.5rem;
         }
       }
     }
-
-    @include breakpoints.min-large {
-      height: auto;
-      width: 100%;
-    }
   }
 
   &__image {
-    margin: 0 auto;
-    & div {
-      max-width: 18rem;
-      margin: 0 auto;
-      @include breakpoints.min-large {
-        width: 100%;
-        height: auto;
-        margin: 0;
-      }
-      @include breakpoints.min-xxl-large {
-        min-width: 35rem;
-      }
-    }
-    @include breakpoints.min-large {
+    // border: 1px solid yellow;
+    width: 100%;
+    height: 100%;
+    @include utilities.flexbox-params(flex, center, center);
+
+    > div {
+      // border: 1px solid orange;
       width: 100%;
-      height: 100%;
-      @include utilities.flexbox-params(flex, center, center);
-    }
-    @include breakpoints.min-xxl-large {
-      & div {
-        max-width: 25rem;
+      max-width: 25rem;
+      @include breakpoints.min-xxl-large {
+        max-width: 35rem;
       }
     }
   }

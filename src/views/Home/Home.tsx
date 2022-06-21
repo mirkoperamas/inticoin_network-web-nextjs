@@ -21,12 +21,12 @@ export const HomeView = () => {
   return (
     <>
       <div className={classes.HomeView}>
-        <Inicio />
+        <Inicio setPaper={setPaper} />
         <Definition />
         <UniqueValue />
-        <Ecosystem />
+        <Ecosystem setPaper={setPaper} />
         <Distribution />
-        <LatestUpdates />
+        <LatestUpdates setPaper={setPaper} />
         <Footer />
       </div>
       {paper && (

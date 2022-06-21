@@ -1,25 +1,34 @@
 import Image from "next/image";
-import { Footer } from "../../../../components/Footer/Footer";
 import { useTranslate } from "../../../../hooks/useTranslate";
 import classes from "./latest-updates.module.scss";
 
-export const LatestUpdates = () => {
+const Fade = require("react-reveal/Fade");
+const Zoom = require("react-reveal/Zoom");
+
+export const LatestUpdates = ({ setPaper }: any) => {
   const { t } = useTranslate();
 
   return (
     <>
-      <div className={classes.content}>
-        <section className={classes.inicio}>
+      <div className={classes.background}>
+        <div className={classes.layer}></div>
+        <section className={classes.updates}>
           <div>
-            <div className={classes.inicio__content}>
-              <div className={classes.inicio__content__text}>
-                <div className={classes.inicio__content__textMain}>
-                  <h1>{t.latestUpdates.title}</h1>
+            <div className={classes.updates__content}>
+              <div className={classes.updates__content__text}>
+                <div className={classes.updates__content__textMain}>
+                  <Fade right big cascade>
+                    <h1>{t.latestUpdates.title}</h1>
+                  </Fade>
                   <h3>{t.latestUpdates.subtitle}</h3>
                 </div>
               </div>
-              <div className={classes.inicio__content__button}>
-                <button>{t.latestUpdates.button}</button>
+              <div className={classes.updates__content__button}>
+                <Zoom top>
+                  <button onClick={() => setPaper(true)}>
+                    {t.latestUpdates.button}
+                  </button>
+                </Zoom>
               </div>
             </div>
           </div>

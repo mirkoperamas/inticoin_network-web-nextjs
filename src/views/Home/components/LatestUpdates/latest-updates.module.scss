@@ -6,50 +6,74 @@
 @use "/src/styles/base/heightValues" as hvalues;
 @use "/src/styles/base/widthValues" as wvalues;
 
-.content {
+.background {
   position: relative;
-  width: 100%;
-  height: calc(100vh - hvalues.$footer-mobile-h - hvalues.$header-mobile-h);
   @include utilities.background-image-params(
-    "/img/home/definition/background2.jpg",
+    "/img/home/latest-updates/background.jpg",
     center,
     no-repeat,
-    cover
+    100% 200%
   );
   width: 100%;
-  height: 100vh;
-
+  height: calc(100vh - hvalues.$footer-mobile-h);
   @include breakpoints.min-large {
     background-size: 100% 100%;
-    height: calc(100vh - hvalues.$footer-h - hvalues.$header-h);
+    height: calc(100vh - hvalues.$footer-h);
   }
   @include breakpoints.min-xxl-large {
-    height: calc(100vh - hvalues.$footer-h - hvalues.$header-max-h);
+    height: calc(100vh - hvalues.$footer-max-h);
   }
 }
 
-.inicio {
+.layer {
+  position: absolute;
+  z-index: zIndex.$layer;
   width: 100%;
+  height: 100%;
+  // background: rgba(0, 0, 0, 0.3);
+  background: rgba(33, 20, 0, 0.65);
+}
 
-  & > div {
+.updates {
+  // border: 1px solid red;
+  position: absolute;
+  z-index: zIndex.$content;
+  top: 0;
+  width: 100%;
+  height: calc(100% - hvalues.$header-mobile-h);
+  margin-top: hvalues.$header-mobile-h;
+  @include breakpoints.min-large {
+    height: 100%;
+    margin-top: 0;
+  }
+
+  > div {
+    // border: 1px solid blue;
     width: wvalues.$width-mobile-w;
+    height: 100%;
     margin: 0 auto;
+    @include utilities.flexbox-params(flex, center, center);
+    flex-direction: column;
+    @include breakpoints.min-large {
+      width: wvalues.$width-w;
+    }
+    @include breakpoints.min-xxl-large {
+      max-width: wvalues.$width-max-w;
+    }
   }
 
   &__content {
+    // border: 1px solid green;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     @include utilities.flexbox-params(flex, auto, center);
     flex-direction: column;
 
     &__text {
       text-shadow: 1px 1px 1px colors.$dark;
-      margin-top: hvalues.$header-h;
-
       @include breakpoints.min-large {
         text-align: center;
-      }
-      @include breakpoints.min-xxl-large {
-        margin-top: hvalues.$header-max-h;
       }
 
       &Image {
@@ -59,7 +83,7 @@
         }
       }
 
-      & h1 {
+      h1 {
         font-size: 27px;
         text-transform: uppercase;
         @include breakpoints.min-large {
@@ -69,7 +93,8 @@
           font-size: 35px;
         }
       }
-      & h3 {
+
+      h3 {
         font-size: 16px;
         margin: 1rem 0rem;
         @include breakpoints.min-large {
@@ -84,14 +109,13 @@
     &__button {
       margin-top: 1rem;
       @include breakpoints.min-large {
-        margin-top: 2rem;
         margin: 0 auto;
       }
       @include breakpoints.min-xxl-large {
-        margin-top: 3rem;
+        margin-top: 2rem;
       }
 
-      & button {
+      button {
         outline: none;
         background: transparent;
         border: 0;
@@ -104,19 +128,14 @@
           colors.$brown
         );
         cursor: pointer;
+        @include breakpoints.min-large {
+          padding: 0.5rem 1.5rem;
+        }
         @include breakpoints.min-xxl-large {
           font-size: 24px;
           padding: 0 1.5rem;
         }
       }
-    }
-  }
-
-  &__image {
-    margin: 0 auto;
-    & div {
-      max-width: 25rem;
-      margin: 0 auto;
     }
   }
 }
